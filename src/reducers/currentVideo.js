@@ -1,7 +1,14 @@
 import Redux from 'redux';
 
-var currentVideoReducer = (state, action) => {
-  //TODO: define a reducer for the currentVideo field of our state.
+const initialState = null;
+
+var currentVideoReducer = (state = initialState, action) => {
+  if (action.type === 'CHANGE_VIDEO') {
+    let newState = Object.assign({}, state);
+    newState = action.video;
+    return newState;
+  }
+  return state;
 };
 
 export default currentVideoReducer;

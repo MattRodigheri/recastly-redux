@@ -4,16 +4,14 @@ import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
 import handleSearchChange from '../actions/search.js';
 
-var SearchContainer = () => {};
+const mapStateToProps = () => {};
 
-//TODO: define a SearchContainer component which will hook up your action
-// dispatchers with your search component props.
-//HINT: use react-redux 'connect' method to generate a container component from
-//state and dispatch mappings.
+const mapDispatchToProps = (dispatch) => ({
+  handleSearchInputChange: (q) => {
+    dispatch(handleSearchChange(q));
+  }
+});
 
+var SearchContainer = connect(mapStateToProps, mapDispatchToProps)(Search);
 
-//mapStateToProps to get data from state and make data available to our component as props
-//The default value for this key of state is an empty array, and it is set in the initial state of our application
-//mapDispatchToProps to get the actions functions and make them available to our component under this.props.actions.
-
-//export default connect(mapStateToProps, mapDispatchToProps)(app)
+export default SearchContainer;

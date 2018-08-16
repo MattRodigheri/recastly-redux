@@ -6,14 +6,16 @@ import YOUTUBE_API_KEY from '../config/youtube.js';
 
 var handleVideoSearch = (q) => {
 
-  let callback = function() {
-    let videos = searchYouTube({key: YOUTUBE_API_KEY, query: q}, function(data) {
-      return data;
+  return function(dispatch) {
+    let options = {
+      key: YOUTUBE_API_KEY,
+      query: q
+    };
+    searchYouTube(options, (videos) => {
+      dispatch(changeVideoList(videos));
+      dispatch(changeVideo(videos[0]));
     });
-    return {type: 'HANDLE_VIDEO_SEARCH', videos: videos};
   };
-
-  return callback;
 };
 
 export default handleVideoSearch;

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
 import handleSearchChange from '../actions/search.js';
 
-const mapStateToProps = () => {};
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   handleSearchInputChange: (q) => {
